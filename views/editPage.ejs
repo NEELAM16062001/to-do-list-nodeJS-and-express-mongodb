@@ -1,23 +1,26 @@
-<!-- Creatd a new Edit section as a part for innovation section -->
 
+<!-- This code creates a form for editing a todo list. -->
 <div class="form_class">
-    <h2 class="color-white">EDIT YOUR DETAILS</h2>
-<form action="/edit-todolist?id=<%= todolist._id %>" method="POST">
+  <h2 class="color-white">EDIT YOUR DETAILS</h2>
+  <form action="/edit-todolist?id=<%= todolist._id %>" method="POST">
+    <!-- This code creates an input field for the description of the todo list. -->
     <div class="desc_Class">
-        <input type="text" name="desc"  value='<%= todolist.desc %>' >
+      <input type="text" name="desc"  value='<%= todolist.desc %>' placeholder="Enter description">
     </div>
+    <!-- This code creates a select field for the category of the todo list. -->
     <div class="select_and_input">
-        <select name="category">
-            <option value="" disabled selected><%= todolist.category %></option>
-            <option>Personal</option>
-            <option>Work</option>
-            <option>Claeaning</option>
-            <option>Otheres</option>
-    
-        </select>
-        <input type="date" required name="dueDate" value=<%= todolist.dueDate %>>
-        
-</div>
+      <select name="category">
+        <!-- This option is disabled and selected by default, so that the user can see the current category. -->
+        <option value="" disabled selected><%= todolist.category %></option>
+        <option>Personal</option>
+        <option>Work</option>
+        <option>Cleaning</option>
+        <option>Others</option>
+      </select>
+      <!-- This code creates an input field for the due date of the todo list. -->
+      <input type="date" required name="dueDate" value=<%= todolist.dueDate %>>
+    </div>
+    <!-- This code creates a button for submitting the form. -->
     <button type="submit" class="edit-button"> Update</button>
-</form>
+  </form>
 </div>
