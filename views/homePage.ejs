@@ -1,49 +1,62 @@
-<!-- HTMl section for main home page -->
-<link rel="stylesheet" href="/css/home.css">  
-        <div class="form_class">
-            <form action="/create_todo" method="POST">
-            <div class="desc_Class">
-                <input type="textarea" required name="desc" placeholder="what do you need to do"> 
-            </div>
-            <div class="select_and_input">
-                <select name="category" required>
-                    <option value="" disabled selected>Select your option</option>
-                    <option>Personal</option>
-                    <option>Work</option>
-                    <option>Claeaning</option>
-                    <option>Otheres</option>
-                </select>
-                <input class="datesValues" type="date" name="dateValue" placeholder="Due data dd/mm/yyyy" required>
-            </div>
-                <button class="buttonDesign colorGrey" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
-                <button class="buttonDesign colorRed" id="deleteButton" type="submit"><i class="fa fa-trash-o"></i> Delete Task</button>
-      
-            </form>
-                 
-        </div>
+<!-- This code links the CSS file for the home page. -->
+<link rel="stylesheet" href="/css/home.css">
 
-<!-- for displaying TODO lists -->
-        <div>
-            <% for(let i of todoList) { let j=0; let newIds='descids'+j; %>
-                <div class="singleTask">
-                    <input type="checkbox" name="delechack" class="delechack" onclick="checkedOrNot()" uid = <%= i._id %> >
-                    <div class="name_and_dueDate">
-                        <p id=<%= i._id %>  uid = <%= i._id %> class="dispdsc"><%= i.desc %></p>
-                        <p id=<%= i._id + i.dueDate %> class="dueDate"  ><%= i.dueDate %></p>
-                    </div>
-                    <div class="catesec">
-                        <%= i.category %>
-                    </div>
-                        <div class="editClass"><a href="/editdata/?id=<%=i._id %>">Edit</a></div>
-                </div>
-                <% j++; } %>
- 
-        </div>
+<!-- This code creates a form for creating a new todo list. -->
+<div class="form_class">
+  <form action="/create_todo" method="POST">
+    <!-- This code creates a text area for the description of the todo list. -->
+    <div class="desc_Class">
+      <input type="textarea" required name="desc" placeholder="what do you need to do">
+    </div>
 
+    <!-- This code creates a select field for the category of the todo list. -->
+    <div class="select_and_input">
+      <select name="category" required>
+        <!-- This option is disabled and selected by default, so that the user can see the current category. -->
+        <option value="" disabled selected>Select your option</option>
+        <option>Personal</option>
+        <option>Work</option>
+        <option>Cleaning</option>
+        <option>Otheres</option>
+      </select>
+      <!-- This code creates an input field for the due date of the todo list. -->
+      <input class="datesValues" type="date" name="dateValue" placeholder="Due data dd/mm/yyyy" required>
+    </div>
 
+    <!-- This code creates two buttons for adding and deleting todo lists. -->
+    <button class="buttonDesign colorGrey" id="submitButton" type="submit"><i class="fa fa-plus-square" > </i> Add Task</button>
+    <button class="buttonDesign colorRed" id="deleteButton" type="submit"><i class="fa fa-trash-o"></i> Delete Task</button>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="/js/script.js"></script>
+  </form>
+</div>
+
+<!-- This code displays all the todo lists created by the user. -->
+<div>
+  <% for(let i of todoList) { let j=0; let newIds='descids'+j; %>
+    <div class="singleTask">
+      <!-- This code creates a checkbox for each todo list. -->
+      <input type="checkbox" name="delechack" class="delechack" onclick="checkedOrNot()" uid = <%= i._id %> >
+
+      <!-- This code displays the description and due date of each todo list. -->
+      <div class="name_and_dueDate">
+        <p id=<%= i._id %>  uid = <%= i._id %> class="dispdsc"><%= i.desc %></p>
+        <p id=<%= i._id + i.dueDate %> class="dueDate"  ><%= i.dueDate %></p>
+      </div>
+
+      <!-- This code displays the category of each todo list. -->
+      <div class="catesec">
+        <%= i.category %>
+      </div>
+
+      <!-- This code creates a link for editing each todo list. -->
+        <div class="editClass"><a href="/editdata/?id=<%=i._id %>">Edit</a></div>
+    </div>
+  <% j++; } %>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="/js/script.js"></script>
+
     
    
